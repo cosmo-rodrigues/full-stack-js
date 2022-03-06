@@ -1,4 +1,4 @@
-import { UserModel } from "../../database/models/User/userModel";
+import { UserModel } from "../../models/userModel";
 import { HttpException } from "../../utils/HttpException";
 import { tokenGenerate } from "../../auth/tokenGenerator";
 

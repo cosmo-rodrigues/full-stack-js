@@ -1,7 +1,7 @@
 import { httpStatusCode } from '../../constants/httpStatusCode';
 import { tokenGenerate } from '../../auth/tokenGenerator';
 import { HttpException } from '../../utils/HttpException';
-import { UserModel } from '../../database/models/User/userModel';
+import { UserModel } from '../../models/userModel';
 
 import * as userValidations from '../../validations/user';
 
