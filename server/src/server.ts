@@ -1,20 +1,21 @@
-import express from "express";
-import { router } from "./routes/index.routes";
-import { handleError } from "./middlewares/handleError";
-import db from './database';
+import "reflect-metadata";
+import {createConnection} from "typeorm";
+import {User} from "./entity/User";
 
-const app = express();
-app.use(express.json());
+createConnection().then(async connection => {
 
-const PORT = process.env.PORT || 3000;
+    console.log("Inserting a new user into the database...");
+    const user = new User();
+    user.name = "Timber";
+    user.username = "Saw";
+    user.phone = +1333451234;
+    await connection.manager.save(user);
+    console.log("Saved a new user with id: " + user.id);
 
-app.get("/", (_request, response) => {
-  response.send("Tô on");
-});
+    console.log("Loading users from the database...");
+    const users = await connection.manager.find(User);
+    console.log("Loaded users: ", users);
 
-app.use(router);
-app.use(handleError);
+    console.log("Here you can setup and run express/koa/any other framework.");
 
-db.sequelize.sync().then(() => {
-  app.listen(PORT, () => console.log("ouvindo porta 3000!"));
-});
+}).catch(error => console.log(error));
