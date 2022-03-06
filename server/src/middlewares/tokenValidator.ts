@@ -1,4 +1,4 @@
-import jwt from "jsonwebtoken";
+import jwt, { JwtPayload } from "jsonwebtoken";
 
 import { NextFunction, Request, Response } from "express";
 
@@ -13,8 +13,12 @@ const malFormedToken = new HttpException(
   "Expired or invalid token",
 );
 
+interface IRequest extends Request {
+  user: string | JwtPayload;
+}
+
 export const tokenValidator = (
-  request: Request,
+  request: IRequest,
   _response: Response,
   next: NextFunction,
 ) => {
