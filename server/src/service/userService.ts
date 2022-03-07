@@ -1,4 +1,5 @@
 import { getManager } from "typeorm";
+import { tokenGenerate } from "../auth/tokenGenerator";
 import { User } from "../entity/User";
 // import { HttpException } from "../utils/HttpException";
 // import { httpStatusCode } from "../constants/httpStatusCode";
@@ -6,7 +7,8 @@ import { User } from "../entity/User";
 export class UserService {
   async create(user: User) {
     const createdUser = await getManager().save(user);
-    return createdUser;
+    const token = tokenGenerate({ email: createdUser.email });
+    return token;
   }
 
   async findAll() {

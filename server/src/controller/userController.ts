@@ -14,8 +14,8 @@ export const create = async (
   try {
     const { name, username, email, phone, website } = request.body;
     const user = new User(name, username, email, phone, website);
-    const createdUser = await userService.create(user);
-    response.send(httpStatusCode.CREATED).json(createdUser);
+    await userService.create(user);
+    response.send(httpStatusCode.CREATED).json({ token: user });
   } catch (error) {
     return next(error);
   }
