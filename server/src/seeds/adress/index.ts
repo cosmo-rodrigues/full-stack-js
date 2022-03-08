@@ -1,9 +1,9 @@
 import { Address } from "../../entity/Address";
 import { MigrationInterface, QueryRunner } from "typeorm";
-import { addressSeed } from "./adress";
+import { addressSeed } from "./address";
 
-export class UserSeedClass implements MigrationInterface {
-  name = "UserSeedClass";
+export class AddressSeedClass implements MigrationInterface {
+  name = "AddressSeedClass";
 
   public async up(queryRunner: QueryRunner): Promise<void> {
     const GBP = await queryRunner.manager.save(
@@ -12,6 +12,6 @@ export class UserSeedClass implements MigrationInterface {
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.query(`DELETE * FROM adress`);
+    await queryRunner.query(`DELETE * FROM address`);
   }
 }

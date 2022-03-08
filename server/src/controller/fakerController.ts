@@ -1,10 +1,10 @@
-import { User } from "../entity/User";
-import { UserService } from "../service/userService";
+import { FakerService } from "../service/fakerService";
 import { NextFunction, Request, Response } from "express";
 import { HttpException } from "../utils/HttpException";
 import { httpStatusCode } from "../constant/httpStatusCode";
+import { request } from "http";
 
-const userService = new UserService();
+const fakerService = new FakerService();
 
 export const create = async (
   request: Request,
@@ -12,10 +12,11 @@ export const create = async (
   next: NextFunction
 ) => {
   try {
-    const { name, username, email, phone, website } = request.body;
-    const user = new User(name, username, email, phone, website);
-    await userService.create(user);
-    response.send(httpStatusCode.CREATED).json({ token: user });
+    const data = request.body;
+    const createdUser = await fakerService.create(data);
+    if (!createdUser)
+      throw new HttpException(httpStatusCode.BAD_REQUEST, "Nothing to show");
+    response.json(createdUser);
   } catch (error) {
     return next(error);
   }
@@ -27,7 +28,7 @@ export const findAll = async (
   next: NextFunction
 ) => {
   try {
-    const users = await userService.findAll();
+    const users = await fakerService.findAll();
     if (!users)
       throw new HttpException(httpStatusCode.BAD_REQUEST, "Nothing to show");
     response.json(users);
@@ -42,11 +43,11 @@ export const findOne = async (
   next: NextFunction
 ) => {
   try {
-    const id = parseInt(request.params.id);
-    const user = await userService.findOne(id);
-    if (!user)
-      throw new HttpException(httpStatusCode.NOT_FOUND, "User does not exist");
-    response.json(user);
+    const id = request.params.id
+    const foundUser = await fakerService.findOne(+id);
+    if (!foundUser)
+      throw new HttpException(httpStatusCode.BAD_REQUEST, "Nothing to show");
+    response.json(foundUser);
   } catch (error) {
     return next(error);
   }

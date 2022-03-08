@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import * as jwt from "jsonwebtoken";
-import { httpStatusCode } from "../constants/httpStatusCode";
+import { httpStatusCode } from "../constant/httpStatusCode";
 
 import { HttpException } from "../utils/HttpException";
 

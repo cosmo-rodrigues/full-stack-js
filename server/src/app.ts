@@ -16,5 +16,5 @@ app.use(express.json());
 
 app.use(router);
 
-// app.use(handleError);
+app.use(handleError);
 app.use(logger("dev"));
