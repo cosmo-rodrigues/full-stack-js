@@ -69,7 +69,7 @@ export class Faker implements IFaker {
   }
 
   async findAllPostsByUserId(id: number) {
-    const postsFound = this.postsData.filter((post) => post.id === id);
+    const postsFound = this.postsData.filter((post) => post.userId === id);
     return postsFound;
   }
 

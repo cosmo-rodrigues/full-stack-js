@@ -33,8 +33,8 @@ export class FakerService {
 
   async findAllPostsByUserId(id: number) {
     const user = await new Faker()
-    const foundedUser = user.findAllPostsByUserId(id)
-    return foundedUser
+    const foundedPoster = user.findAllPostsByUserId(id)
+    return foundedPoster
   }
 
   async findOnePost(id: number) {

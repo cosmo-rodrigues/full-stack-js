@@ -10,7 +10,7 @@ export const db = async () => {
     host: "localhost",
     port: 5432,
     username: "postgres",
-    password: "Kyuuk@n007",
+    password: "postgres",
     database: "postgres",
     entities: [User, Post, Company, Address],
     synchronize: true,
