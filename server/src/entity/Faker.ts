@@ -1,3 +1,5 @@
+import { data } from '../mock/data';
+
 class IFakerDTO {
     id: number;
     name: string;
@@ -33,7 +35,7 @@ interface IFaker {
 export class Faker implements IFaker{
   private data: IFakerDTO[]
   constructor() {
-    this.data = []
+    this.data = data
   }
 
   async create(data) {
