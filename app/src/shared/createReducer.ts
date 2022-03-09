@@ -1,4 +1,5 @@
+// @ts-nocheck
 export const createReducer =
-  (initialState: {}, reducer: (state, action) => void) =>
-  (state = initialState, action: () => void) =>
+  (initialState, reducer) =>
+  (state = initialState, action) =>
     reducer(state, action) || state;

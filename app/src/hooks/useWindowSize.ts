@@ -5,7 +5,7 @@ interface IResolutionProps {
   height: number;
 }
 
-function useWindowSize() {
+export function useWindowSize() {
   const [windowSize, setWindowSize] = useState<IResolutionProps>({
     width: 0,
     height: 0,
@@ -28,5 +28,3 @@ function useWindowSize() {
 
   return windowSize;
 }
-
-export default useWindowSize;
