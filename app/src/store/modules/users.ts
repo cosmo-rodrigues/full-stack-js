@@ -36,7 +36,7 @@ export const initialState = {
 };
 
 export default createReducer(initialState, (state, action) => {
-  const handler = ACTION_HANDLERS[action.type];
+  const handler = ACTION_HANDLERS[action.type]
 
-  return handler ? handler(state, action) : { ...state, isLoading: false };
-});
+  return handler ? handler(state, action) : { ...state, isLoading: false }
+})

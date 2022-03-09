@@ -8,7 +8,7 @@ export const theme = {
     indigo: '#54086B',
     pink_70: '#FF0BAC',
     red_30: '#ff4d4f',
-    white: '#FFF',
+    white_100: '#FFF',
   },
   fonts: {},
 };

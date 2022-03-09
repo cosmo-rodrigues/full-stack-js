@@ -1,26 +1,36 @@
-const BASE_URL = process.env.BASE_URL
+const BASE_URL = 'http://localhost:3001/faker';
 
-export async function fetchAllUsersFaker() {
-  const request = await fetch(`${BASE_URL}/users`)
-  return request
+export function fetchAllUsersFaker() {
+  const request = fetch(`${BASE_URL}/users`)
+    .then((data) => data.json())
+    .then((data) => data);
+  return request;
 }
 
 export async function fetchUserByIdFaker(id: number) {
   const request = await fetch(`${BASE_URL}/users/${id}`)
-  return request
+    .then((data) => data.json())
+    .then((data) => data);
+  return request;
 }
 
 export async function fetchAllPostsFaker() {
   const request = await fetch(`${BASE_URL}/posts`)
-  return request
+    .then((data) => data.json())
+    .then((data) => data);
+  return request;
 }
 
 export async function fetchPostByIdFaker(id: number) {
   const request = await fetch(`${BASE_URL}/posts/${id}`)
-  return request
+    .then((data) => data.json())
+    .then((data) => data);
+  return request;
 }
 
 export async function fetchAllPostsByUserIdFaker(id: number) {
   const request = await fetch(`${BASE_URL}/posts/user/${id}`)
-  return request
+    .then((data) => data.json())
+    .then((data) => data);
+  return request;
 }

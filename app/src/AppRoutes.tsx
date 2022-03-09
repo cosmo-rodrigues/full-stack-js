@@ -1,18 +1,32 @@
-import React from "react";
-import { Route, BrowserRouter } from "react-router-dom";
+import { Route, Routes } from 'react-router-dom';
 
-import {Home} from "./pages/home";
+import { About } from './pages/about';
+import { ContactUs } from './pages/contactUs';
+import { Home } from './pages/home';
 import { PageNotFound } from './pages/404';
-// import Sobre from "./Sobre";
-// import Usuario from "./Usuario";
+import { Services } from './pages/services';
+import { SignUp } from './pages/signUp';
+import { SignIn } from './pages/SignIn';
 
-export const AppRoutes = () => {
-   return(
-       <BrowserRouter>
-           <Route element={ Home }  path="/" />
-           <Route element={ PageNotFound }/>
-           {/* <Route element={ Sobre }  path="/sobre" />
-           <Route element={ Usuario }  path="/usuario" /> */}
-       </BrowserRouter>
-   )
+import { Navbar } from './components/Navbar/index';
+
+import { Container } from './styles';
+import { Footer } from './components/Footer';
+
+export function AppRoutes() {
+  return (
+    <Container>
+      <Navbar />
+      <Routes>
+        <Route caseSensitive path='/' element={<Home />} />
+        <Route path='/about' element={<About />} />
+        <Route path='/services' element={<Services />} />
+        <Route path='/contact-us' element={<ContactUs />} />
+        <Route path='/sign-up' element={<SignUp />} />
+        <Route path='/sign-in' element={<SignIn />} />
+        <Route element={<PageNotFound />} />
+      </Routes>
+      <Footer />
+    </Container>
+  );
 }

@@ -3,16 +3,16 @@ import { createSagaAction } from '../../shared/sagas';
 import { createReducer } from '../../shared/createReducer';
 
 export const constants = {
-  FETCH_ALL_USERS_FAKER: createSagaAction('FETCH_ALL_USERS'),
+  FETCH_ALL_USERS_FAKER: createSagaAction('FETCH_ALL_USERS_FAKER'),
   FETCH_USER_FAKER: createSagaAction('FETCH_USER_FAKER'),
 };
 
 export const actions = {
-  fetchAllUsersFaker: (next: () => void) => ({
+  fetchAllUsersFaker: (next) => ({
     type: constants.FETCH_ALL_USERS_FAKER.ACTION,
     next,
   }),
-  fetchUserByIdFaker: (id: number, next: () => void) => ({
+  fetchUserByIdFaker: (id, next) => ({
     type: constants.FETCH_ALL_USERS_FAKER.ACTION,
     id,
     next,
@@ -25,9 +25,10 @@ const ACTION_HANDLERS = {
     return { ...state, error: false, isLoading: true };
   },
   [constants.FETCH_ALL_USERS_FAKER.SUCCESS]: (state, action) => {
+    const data = Object.assign([], action.payload);
     return {
       ...state,
-      data: action.payload,
+      data,
       isLoading: false,
     };
   },

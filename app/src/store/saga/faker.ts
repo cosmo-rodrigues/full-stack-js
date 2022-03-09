@@ -1,14 +1,13 @@
 // @ts-nocheck
 import { all, call, fork, put, takeLatest } from 'redux-saga/effects'
-import { SagaIterator } from 'redux-saga'
 
-import * as api from '../api/users'
+import * as api from '../api/faker'
 import { constants } from '../modules/faker'
 
 
-function* fetchAllUsersFaker(action: () => any): SagaIterator  {
+function* fetchAllUsersFaker(action)  {
   try {
-    const payload = yield call(api.fetchAllUsersFaker)
+    const payload = yield call(api.fetchAllUsersFaker, action.payload)
     yield put({ type: constants.FETCH_ALL_USERS_FAKER.SUCCESS, payload })
     action.next && action.next(payload)
   } catch (e) {
