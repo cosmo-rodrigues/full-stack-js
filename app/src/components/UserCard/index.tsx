@@ -5,6 +5,7 @@ import {
   UserSubInfos,
   UserInfoWrapper,
   UserName,
+  UserHeader,
   UserId,
   UserEmail,
   UserPhone,
@@ -24,10 +25,12 @@ export function UsersCard({ id, name, username, email, phone, website }: IUserPr
   return (
     <Container>
       <UserInfoWrapper>
-        <UserId>
-          #{id} - {username}
-        </UserId>
-        <UserName>{name}</UserName>
+        <UserHeader>
+          <UserId>
+            #{id} - {username}
+          </UserId>
+          <UserName>{name}</UserName>
+        </UserHeader>
         <UserSubInfos>
           <UserPhone>{phone}</UserPhone>
           <UserEmail>{email}</UserEmail>
