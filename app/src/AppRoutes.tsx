@@ -10,22 +10,24 @@ import { SignIn } from './pages/SignIn';
 
 import { Navbar } from './components/Navbar/index';
 
-import { Container } from './styles';
+import { Container, Hero } from './styles';
 import { Footer } from './components/Footer';
 
 export function AppRoutes() {
   return (
     <Container>
       <Navbar />
-      <Routes>
-        <Route caseSensitive path='/' element={<Home />} />
-        <Route path='/about' element={<About />} />
-        <Route path='/services' element={<Services />} />
-        <Route path='/contact-us' element={<ContactUs />} />
-        <Route path='/sign-up' element={<SignUp />} />
-        <Route path='/sign-in' element={<SignIn />} />
-        <Route element={<PageNotFound />} />
-      </Routes>
+      <Hero>
+        <Routes>
+          <Route caseSensitive path='/' element={<Home />} />
+          <Route path='/about' element={<About />} />
+          <Route path='/services' element={<Services />} />
+          <Route path='/contact-us' element={<ContactUs />} />
+          <Route path='/sign-up' element={<SignUp />} />
+          <Route path='/sign-in' element={<SignIn />} />
+          <Route element={<PageNotFound />} />
+        </Routes>
+      </Hero>
       <Footer />
     </Container>
   );

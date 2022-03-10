@@ -1,16 +1,28 @@
-import { createStore, applyMiddleware } from 'redux';
+import { combineReducers, createStore, applyMiddleware, compose } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import logger from 'redux-logger';
 import { routerReducer } from 'react-router-redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
+import { persistStore } from 'redux-persist';
 
-import rootSaga from './saga/index';
+import { persistRootReducer } from './persistor';
+import reducers from './modules';
+import rootSaga from './saga';
 
 const sagaMiddleware = createSagaMiddleware();
 
-export const store = createStore(
-  routerReducer,
+const persistedReducer = persistRootReducer(
+  combineReducers({ ...reducers, routing: routerReducer })
+);
+const store = createStore(
+  persistedReducer,
+  undefined,
   composeWithDevTools(applyMiddleware(sagaMiddleware, logger))
 );
 
+const persistor = persistStore(store);
+
+// Run the saga now
 sagaMiddleware.run(rootSaga);
+
+export { persistor, store };

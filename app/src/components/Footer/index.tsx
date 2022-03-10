@@ -1,7 +1,9 @@
+import { Container, Copyright } from './styles';
+
 export function Footer() {
   return (
-    <div>
-      <h1>Footer</h1>
-    </div>
+    <Container>
+      <Copyright>&reg;Cosmo Rodrigues - 2022</Copyright>
+    </Container>
   );
 }
