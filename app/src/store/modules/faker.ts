@@ -41,9 +41,10 @@ const ACTION_HANDLERS = {
     return { ...state, error: false, isLoading: true };
   },
   [constants.FETCH_USER_FAKER.SUCCESS]: (state, action) => {
+    console.log('action: ', action);
     return {
       ...state,
-      data: action.payload,
+      data: action,
       isLoading: false,
     };
   },
