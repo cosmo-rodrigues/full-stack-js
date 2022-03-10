@@ -1,7 +1,8 @@
 // @ts-nocheck
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { Container } from './styles';
+
+import { Container, UserCardWrapper } from './styles';
 
 import { actions as fakerActions } from '../../store/modules/faker';
 
@@ -25,10 +26,10 @@ export function Home() {
 
   return (
     <Container>
-      <h1>Home</h1>
-      <>
+      <UserCardWrapper>
         {data.map((user: IUserProps) => (
           <UsersCard
+            key={user.username}
             email={user.email}
             id={user.id}
             name={user.name}
@@ -37,7 +38,7 @@ export function Home() {
             website={user.website}
           />
         ))}
-      </>
+      </UserCardWrapper>
     </Container>
   );
 }
