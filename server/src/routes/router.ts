@@ -15,4 +15,4 @@ router.use("/user", user);
 
 router.use("/company", company);
 
-router.use("/post", post);
+router.use("/posts", post);
